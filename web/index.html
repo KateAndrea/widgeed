@@ -66,6 +66,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<div class="footer">
 		<div class="copy-right">
+
+			<audio controls="true"></audio><br>
+			<input type="file" accept="audio/*" />
+			<script>
+				var files = document.querySelector('input'),
+						audio = document.querySelector('audio');
+
+				files.addEventListener('change', function(){
+					audio.src = URL.createObjectURL(this.files[0]);
+				});
+				audio.addEventListener('canplay', function(){
+					this.play();
+
+					var context = new AudioContext();
+					var input = context.createMediaElementSource(this);
+					//... здесь творим что нам надо
+					input.connect(context.destination);
+				});
+			</script>
+			<!--<a href="file://D:/">открыть папку</a>-->
 			<p> &copy; 2015 Audio List Player Widget. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
 		</div>
 	</div>
